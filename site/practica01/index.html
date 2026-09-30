@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>PRACTICA 01 - CONFIGURACIÓN E INSTALACIÓN DEL ENTORNO - Proyecto Interdisciplinar 2026/27</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/estilo.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var properdocs_page_name = "PRACTICA 01 - CONFIGURACI\u00d3N E INSTALACI\u00d3N DEL ENTORNO";
+        var properdocs_page_input_path = "practica01.md";
+        var properdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Proyecto Interdisciplinar 2026/27
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" title="Escriba el término de búsqueda aquí" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegación">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">PRACTICA 01 - CONFIGURACIÓN E INSTALACIÓN DEL ENTORNO</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Menú de navegación en móvil">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Proyecto Interdisciplinar 2026/27</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Documentos"></a></li>
+      <li class="breadcrumb-item active">PRACTICA 01 - CONFIGURACIÓN E INSTALACIÓN DEL ENTORNO</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="practica-01">Práctica 01</h1>
+<h1 id="1-git-instalado-y-configurado-en-local">1. Git instalado y configurado en local</h1>
+<p>He instalado y configurado Git en local, y para comprobarlo uso el siguiente comando:</p>
+<pre class="highlight"><code class="language-cmd">git config list</code></pre>
+<p><img alt="Git instalado y configurado" src="../img/gitConfigList.png" /></p>
+<hr />
+<h1 id="2-github-cli-instalado-y-configurado">2. GitHub CLI instalado y configurado</h1>
+<p>He instalado y configurado GitHub CLI para trabajar con GitHub desde la
+terminal, y para comprobar que está correctamente autenticado uso el
+siguiente comando:</p>
+<pre class="highlight"><code class="language-cmd">gh auth status</code></pre>
+<p><img alt="GitHub CLI instalado y configurado" src="../img/github.png" /></p>
+<h1 id="3-herd-instalado-con-php-84">3. Herd instalado con PHP 8.4</h1>
+<p>He instalado Herd y configurado PHP 8.4 para utilizarlo como entorno de
+desarrollo local. Para comprobar la versión de PHP uso el siguiente
+comando:</p>
+<pre class="highlight"><code class="language-cmd">herd php -v</code></pre>
+<p><img alt="Herd y PHP 8.4" src="../img/herdphp.png" /></p>
+<h1 id="4-repositorio-misitio-clonado-en-local">4. Repositorio "misitio" clonado en local</h1>
+<p>He clonado el repositorio <code>misitio</code> en local para poder trabajar con el
+proyecto desde el equipo. Para comprobar la conexión con el repositorio
+remoto uso el siguiente comando:</p>
+<pre class="highlight"><code class="language-cmd">git remote -v</code></pre>
+<p><img alt="Repositorio misitio clonado" src="../img/gitRemote.png" /></p>
+<h1 id="5-herd-enlazado-al-repositorio-misitio-y-https">5. Herd enlazado al repositorio "misitio" y HTTPS</h1>
+<p>He enlazado el repositorio <code>misitio</code> con Herd para poder ejecutarlo
+desde el entorno local y acceder al sitio mediante HTTPS. Para comprobar
+los proyectos enlazados con Herd uso el siguiente comando:</p>
+<pre class="highlight"><code class="language-cmd">herd links</code></pre>
+<p><img alt="Herd enlazado y HTTPS" src="../img/herdLinks.png" /></p>
+<h1 id="6-elementos-y-plugins-utilizados-en-read-the-docs">6. Elementos y plugins utilizados en Read the Docs</h1>
+<p>Para realizar la documentación se ha utilizado Markdown junto con Read
+the Docs.</p>
+<p>Los principales elementos utilizados son:</p>
+<ul>
+<li>Títulos y subtítulos para organizar el contenido.</li>
+<li>Bloques de código para mostrar los comandos utilizados.</li>
+<li>Imágenes para añadir las capturas de pantalla.</li>
+<li>Texto para explicar cada apartado.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Construído con <a href="https://properdocs.org/">ProperDocs</a> usando un <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a> provisto por <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versiones">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      <script src="../js/copy-button.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
