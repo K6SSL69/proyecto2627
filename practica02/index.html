@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Cálculo del salario según el puesto - Proyecto Interdisciplinar 2026/27</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/estilo.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var properdocs_page_name = "C\u00e1lculo del salario seg\u00fan el puesto";
+        var properdocs_page_input_path = "practica02.md";
+        var properdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Proyecto Interdisciplinar 2026/27
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" title="Escriba el término de búsqueda aquí" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegación">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../practica01/">PRACTICA 01 - CONFIGURACIÓN E INSTALACIÓN DEL ENTORNO</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Menú de navegación en móvil">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Proyecto Interdisciplinar 2026/27</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Documentos"></a></li>
+      <li class="breadcrumb-item active">Cálculo del salario según el puesto</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="calculo-del-salario-segun-el-puesto">Cálculo del salario según el puesto</h1>
+<p>Este código permite introducir un <strong>sueldo</strong> y seleccionar un <strong>puesto de trabajo</strong>.
+Después, los datos se envían mediante <code>POST</code> a un archivo PHP, que calcula un complemento según el puesto y muestra el sueldo final.</p>
+<h2 id="1-formulario-html">1. Formulario HTML</h2>
+<p>El formulario recoge dos datos:</p>
+<ul>
+<li><strong>Sueldo:</strong> cantidad introducida por el usuario.</li>
+<li><strong>Puesto:</strong> puesto seleccionado de una lista.</li>
+</ul>
+<p>Los datos se envían mediante el método <code>POST</code> al archivo <code>ut02p02.php</code>.</p>
+<pre class="highlight"><code class="language-html">&lt;form name="myform" method="post" action="ut02p02.php"&gt;
+
+    &lt;input
+        class="input is-link"
+        type="number"
+        placeholder="Introduce tu sueldo: "
+        name="sueldo"
+        min="1001" 
+        required
+    /&gt;
+
+    &lt;br&gt;
+
+    &lt;label for="puesto"&gt;PUESTO:&lt;/label&gt;
+    &lt;select id="puesto" name="puesto" required&gt;
+        &lt;option value=""&gt;-- Selecciona un puesto --&lt;/option&gt;
+        &lt;option value="base"&gt;Base&lt;/option&gt;
+        &lt;option value="directivo"&gt;Directivo&lt;/option&gt;
+        &lt;option value="alto_cargo"&gt;Alto cargo&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;br&gt;
+
+    &lt;input type="submit" class="button is-warning" value="CALCULAR SALARIO"&gt;
+
+&lt;/form&gt;</code></pre>
+<h3 id="que-hace-cada-parte">¿Qué hace cada parte?</h3>
+<ul>
+<li><code>method="post"</code> → indica que los datos se enviarán mediante <code>POST</code>.</li>
+<li><code>action="ut02p02.php"</code> → indica el archivo PHP que recibirá los datos.</li>
+<li><code>name="sueldo"</code> → nombre utilizado para recoger el sueldo en PHP.</li>
+<li><code>name="puesto"</code> → nombre utilizado para recoger el puesto en PHP.</li>
+<li><code>min="1001"</code> → obliga a introducir un sueldo mínimo de 1001 €.</li>
+<li><code>required</code> → hace que el campo sea obligatorio.</li>
+<li><code>&lt;select&gt;</code> → permite seleccionar uno de los puestos disponibles.</li>
+<li><code>type="submit"</code> → crea el botón que envía el formulario.</li>
+</ul>
+<hr />
+<h2 id="2-codigo-php">2. Código PHP</h2>
+<p>El archivo PHP recibe los datos enviados por el formulario utilizando <code>$_POST</code>.</p>
+<pre class="highlight"><code class="language-php">&lt;?php
+    $sueldo = $_POST["sueldo"];
+    $puesto = $_POST["puesto"];
+
+    switch ($puesto) {
+
+        case "base":
+            $porcentaje = 10;
+            break;
+
+        case "directivo":
+            $porcentaje = 15;
+            break;
+
+        case "alto_cargo":
+            $porcentaje = 20;
+            break;
+
+        default:
+            die("Puesto no válido.");
+    }
+
+    $complemento = $sueldo * ($porcentaje / 100);
+
+    $sueldoFinal = $sueldo + $complemento;
+?&gt;</code></pre>
+<h3 id="recoger-los-datos">Recoger los datos</h3>
+<p>Con <code>$_POST</code> obtenemos los valores enviados desde el formulario:</p>
+<pre class="highlight"><code class="language-php">$sueldo = $_POST["sueldo"];
+$puesto = $_POST["puesto"];</code></pre>
+<ul>
+<li><code>$_POST["sueldo"]</code> → recoge el sueldo introducido.</li>
+<li><code>$_POST["puesto"]</code> → recoge el puesto seleccionado.</li>
+</ul>
+<hr />
+<h3 id="elegir-el-porcentaje">Elegir el porcentaje</h3>
+<p>Se utiliza un <code>switch</code> para comprobar el puesto seleccionado y establecer el porcentaje correspondiente:</p>
+<pre class="highlight"><code class="language-php">switch ($puesto) {
+
+    case "base":
+        $porcentaje = 10;
+        break;
+
+    case "directivo":
+        $porcentaje = 15;
+        break;
+
+    case "alto_cargo":
+        $porcentaje = 20;
+        break;
+
+    default:
+        die("Puesto no válido.");
+}</code></pre>
+<p>Los porcentajes son:</p>
+<table>
+<thead>
+<tr>
+<th>Puesto</th>
+<th style="text-align: right;">Complemento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td style="text-align: right;">10%</td>
+</tr>
+<tr>
+<td>Directivo</td>
+<td style="text-align: right;">15%</td>
+</tr>
+<tr>
+<td>Alto cargo</td>
+<td style="text-align: right;">20%</td>
+</tr>
+</tbody>
+</table>
+<p>Si el puesto no coincide con ninguno de los casos, se ejecuta:</p>
+<pre class="highlight"><code class="language-php">die("Puesto no válido.");</code></pre>
+<p>Esto detiene la ejecución y muestra un mensaje de error.</p>
+<hr />
+<h2 id="3-calcular-el-complemento">3. Calcular el complemento</h2>
+<p>Una vez conocemos el sueldo y el porcentaje, calculamos el complemento:</p>
+<pre class="highlight"><code class="language-php">$complemento = $sueldo * ($porcentaje / 100);</code></pre>
+<p>Por ejemplo, si el sueldo es <strong>2000 €</strong> y el porcentaje es <strong>15%</strong>:</p>
+<pre class="highlight"><code class="language-text">2000 × (15 / 100) = 300 €</code></pre>
+<p>Por tanto, el complemento sería de <strong>300 €</strong>.</p>
+<hr />
+<h2 id="4-calcular-el-sueldo-final">4. Calcular el sueldo final</h2>
+<p>Después sumamos el sueldo base y el complemento:</p>
+<pre class="highlight"><code class="language-php">$sueldoFinal = $sueldo + $complemento;</code></pre>
+<p>Siguiendo el ejemplo anterior:</p>
+<pre class="highlight"><code class="language-text">2000 + 300 = 2300 €</code></pre>
+<p>El sueldo final sería <strong>2300 €</strong>.</p>
+<hr />
+<h2 id="5-mostrar-el-resultado">5. Mostrar el resultado</h2>
+<p>Finalmente, PHP muestra los resultados utilizando <code>echo</code>:</p>
+<pre class="highlight"><code class="language-php">&lt;h1&gt;Resultado del salario&lt;/h1&gt;
+
+&lt;p&gt;
+    El sueldo base es de
+    &lt;?php echo $sueldo; ?&gt;€
+&lt;/p&gt;
+
+&lt;p&gt;
+    El complemento es del
+    &lt;?php echo $porcentaje; ?&gt;%
+&lt;/p&gt;
+
+&lt;p&gt;
+    El sueldo final es de
+    &lt;?php echo $sueldoFinal; ?&gt;€
+&lt;/p&gt;</code></pre>
+<p><code>echo</code> permite mostrar en HTML el valor de una variable PHP.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Construído con <a href="https://properdocs.org/">ProperDocs</a> usando un <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a> provisto por <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versiones">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      <script src="../js/copy-button.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
